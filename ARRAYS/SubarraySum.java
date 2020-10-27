@@ -1,6 +1,7 @@
 /*Given an unsorted array A of size N of non-negative integers, find a continuous sub-array which adds to a given number S.*/
 
 
+
 import java.util.*;
 public class SubarraySum {
 
@@ -10,7 +11,9 @@ public class SubarraySum {
 		   int T=sc.nextInt();
 		   while(T!=0)
 		   {
+			   //array size
 			   int n=sc.nextInt();
+			   //sum
 			   int sum=sc.nextInt();
 			   int a[]=new int[n];
 			   for(int i=0;i<n;i++)
@@ -26,14 +29,21 @@ public class SubarraySum {
 				   {
 					   if(curr_sum>sum)
 						    break;
-					   else
-					        curr_sum+=a[j];
-					   
-					   if(curr_sum==sum)
+					   else if(curr_sum<sum)
 					   {
-						    ul=j;
-						    break main_loop;
+						   curr_sum+=a[j];
+						   if(curr_sum==sum)
+						   {
+							   ul=j;
+							   break main_loop;
+						   }
 					   }
+					   else
+					   {
+						    ul=j-1;
+						    break main_loop;
+					   }  //when single element is sum
+					   
 				   }
 				   curr_sum=0;
 			   }
